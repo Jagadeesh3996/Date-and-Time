@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery.min.js"></script>
+    <title>Date and Time</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+        .main{
+            width: 100%;
+            height: 97vh;
+            text-align: center;
+            font-size: 20px;
+            background: linear-gradient(45deg,rgb(139, 139, 232),rgb(61, 6, 243),rgb(103, 94, 186));
+            color: rgb(255, 255, 255);
+            font-weight: 600;
+            padding-top: 10%;
+            border: 5px solid rgb(0, 0, 0);
+            border-radius: 10px;
+        }
+        #time{
+            font-size: 30px;
+        }
+    </style>
+    <script>
+        $('document').ready(function(){
+            const week = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+            const month = ['JAN','FEB','MAR','APR','MAY','JUNE','JULY','AUG','SEP','OCT','NOV','DEC'];
+            pad = (num,dig) => String(num).padStart(dig,'0');
+            dt = () => {
+                const dt = new Date();
+                $('#date').text(`${pad(dt.getDate(),2)}-${month[dt.getMonth()]}-${dt.getFullYear()} ${week[dt.getDay()]}`);
+                $('#time').text(`${pad(dt.getHours(),2)} : ${pad(dt.getMinutes(),2)} : ${pad(dt.getSeconds(),2)}`);
+            };
+            setInterval(dt, 1000);
+        })
+    </script>
+</head>
+<body>
+    <div class="main">
+        <p id="date"></p>
+        <p id="time"></p>
+    </div>
+</body>
+</html>
